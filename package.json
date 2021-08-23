@@ -1,0 +1,26 @@
+{
+  "name": "lint-cli",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "bin": {
+    "lc": "dist/index.js"
+  },
+  "scripts": {
+    "start": "tsc -p tsconfig.json --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "liuqh",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^16.7.1",
+    "@types/sade": "^1.7.3",
+    "tslib": "^2.3.1"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "inquirer": "^8.1.2",
+    "sade": "^1.7.4"
+  }
+}
