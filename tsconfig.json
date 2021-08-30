@@ -1,5 +1,5 @@
 {
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "templates"],
   "compilerOptions": {
     "allowJs": true,
     "jsx": "react",
