@@ -2,7 +2,7 @@ import { logger, createPrompt } from '../utils';
 import jetpack from 'fs-jetpack';
 import path from 'path';
 import spawn from 'child_process';
-
+import ora from 'ora';
 /**
  * cli初始化方法
  * @description 提供给用户选择模板类型，目前提供js和ts模板
@@ -63,7 +63,7 @@ const createPrettierrc = () => {
 	const filename = '.prettierrc.js';
 
 	if (has_prettierrc.length === 0) {
-		logger.primary('🏄🏻创建prettier文件...');
+		logger.primary('🏄🏻 创建prettier文件...');
 		// 从模板中复制到项目目录中
 		try {
 			jetpack.copy(path.resolve(templatePath, filename), path.resolve(cwd_path, filename));
@@ -118,16 +118,25 @@ const installDependencies = async () => {
 		logger.warning('为了确保插件生效，请手动执行 npm i 或者 yarn');
 		return;
 	}
+	const loading = ora('😄 依赖安装中，可以打个哈欠休息一下').start();
 	try {
 		const prefix = answer === list[0] ? 'npm install' : 'yarn add';
 		let res = `${prefix} `;
 		for (let key in devDependencies) {
 			res += `${key}@${devDependencies[key]} `;
 		}
-		spawn.exec(res);
+		spawn.exec(res, (error, stdout) => {
+			if (error !== null) {
+				console.log('exec error: ' + error);
+			}
+			logger.primary(`\r\n${stdout}`);
+			loading.stop();
+			loading.succeed('依赖安装成功');
+		});
 	} catch (err) {
 		logger.error((err as any).message);
 	}
+	// spinner.stop();
 };
 
 export default init;
