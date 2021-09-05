@@ -4,23 +4,30 @@
   "description": "",
   "main": "dist/index.js",
   "bin": {
-    "lc": "dist/index.js"
+    "lint-cli": "dist/index.js"
   },
   "scripts": {
     "start": "tsc -p tsconfig.json --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "liuqh",
+  "author": "liuqh <liuqh0609@163.com>",
   "license": "ISC",
   "devDependencies": {
+    "@types/inquirer": "^7.3.3",
     "@types/node": "^16.7.1",
     "@types/sade": "^1.7.3",
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^4.30.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.4.1",
+    "prettier": "^2.3.2",
     "tslib": "^2.3.1"
   },
   "dependencies": {
-    "@types/inquirer": "^7.3.3",
     "chalk": "^4.1.2",
+    "fs-jetpack": "^4.1.1",
     "inquirer": "^8.1.2",
     "sade": "^1.7.4"
   }

@@ -1,7 +1,4 @@
-import prompt from './prompt'
-import * as logger from './logger'
+import createPrompt from './prompt';
+import * as logger from './logger';
 
-export {
-  prompt,
-  logger
-}
+export { createPrompt, logger };
