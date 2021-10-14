@@ -14,7 +14,6 @@ prog.version(version).option('-c, --config', '就是一些我没有想好的动�
 prog
 	.command('init')
 	.describe('初始化项目中的eslint配置和prettier格式化内容')
-	.example('create package')
 	.example('lint init')
 	.action(async () => {
 		// 初始化

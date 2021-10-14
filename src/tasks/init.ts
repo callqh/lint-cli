@@ -3,30 +3,32 @@ import jetpack from 'fs-jetpack';
 import path from 'path';
 import spawn from 'child_process';
 import ora from 'ora';
+import { mergeJSFile } from '../utils/merge';
 /**
  * cli初始化方法
  * @description 提供给用户选择模板类型，目前提供js和ts模板
  */
 const init = async () => {
-	const describe = ' 请选择项目模板';
-	const list = ['js', 'ts'];
-	const answer = await createPrompt(describe, list);
-
-	switch (answer) {
-		case list[0]:
-			// TODO
-			createEslintrc();
-			createPrettierrc();
-			break;
-		case list[1]:
-			// TODO
-			createEslintrc();
-			createPrettierrc();
-			break;
-		default:
-			logger.error('❌请选择对应的项目模板');
-			break;
-	}
+	// const describe = ' 请选择项目模板';
+	// const list = ['js', 'ts'];
+	// const answer = await createPrompt(describe, list);
+	createEslintrc();
+	createPrettierrc();
+	// switch (answer) {
+	// 	case list[0]:
+	// 		// TODO
+	// 		createEslintrc();
+	// 		createPrettierrc();
+	// 		break;
+	// 	case list[1]:
+	// 		// TODO
+	// 		createEslintrc();
+	// 		createPrettierrc();
+	// 		break;
+	// 	default:
+	// 		logger.error('❌请选择对应的项目模板');
+	// 		break;
+	// }
 
 	logger.success('🎉 配置完成！');
 	installDependencies();
@@ -74,9 +76,10 @@ const createPrettierrc = () => {
 		// 已有相关eslint配置
 		logger.warning('❗️已有prettier相关配置文件');
 		// TODO: 进行配置合并
+		// JS文件合并
+		mergeJSFile(has_prettierrc[0]);
 	}
 };
-
 /**
  * 安装所需要的依赖
  */
