@@ -7,8 +7,6 @@ import jetpack from 'fs-jetpack';
 import YAML from 'yamljs';
 import path from 'path';
 
-// const templatePath = path.join(__dirname, './templates');
-
 export const mergeJSFile = (filename: string) => {
 	let code = jetpack.read(path.resolve(jetpack.cwd(), filename));
 

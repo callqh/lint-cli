@@ -51,7 +51,7 @@ const createEslintrc = () => {
 		jetpack.copy(path.resolve(templatePath, filename), path.resolve(cwd_path, filename));
 	} else {
 		// 已有相关eslint配置
-		logger.warning('❗️已有eslint相关配置文件');
+		logger.warning('❗️已有eslint相关配置文件，是否删除已有配置');
 		// TODO: 进行配置合并
 	}
 };
@@ -74,8 +74,7 @@ const createPrettierrc = () => {
 		}
 	} else {
 		// 已有相关eslint配置
-		logger.warning('❗️已有prettier相关配置文件');
-		// TODO: 进行配置合并
+		logger.warning('❗️已有prettier相关配置文件，即将进行文件合并');
 		// JS文件合并
 		mergeJSFile(has_prettierrc[0]);
 	}
@@ -114,11 +113,11 @@ const installDependencies = async () => {
 	logger.success('依赖注入成功！');
 	// 选择安装依赖的工具
 	const describe = ' 请选择您信赖的依赖安装工具';
-	const list = ['npm', 'yarn', '达咩'];
+	const list = ['npm', 'yarn', '达咩:)'];
 	const answer = await createPrompt(describe, list);
 	// 用户选择手动安装
 	if (answer === list[2]) {
-		logger.warning('为了确保插件生效，请手动执行 npm i 或者 yarn');
+		logger.warning('为了确保插件生效，请手动执行 npm i 或者 yarn 安装新增的依赖');
 		return;
 	}
 	const loading = ora('😄 依赖安装中，可以打个哈欠休息一下').start();
@@ -134,12 +133,11 @@ const installDependencies = async () => {
 			}
 			logger.primary(`\r\n${stdout}`);
 			loading.stop();
-			loading.succeed('依赖安装成功');
+			loading.succeed('依赖安装成功，尽情使用吧~');
 		});
 	} catch (err) {
 		logger.error((err as any).message);
 	}
-	// spinner.stop();
 };
 
 export default init;

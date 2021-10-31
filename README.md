@@ -1,4 +1,4 @@
-# Lint-cli
+# prelint-cli
 
  
 
@@ -10,11 +10,15 @@
 
 一款可以帮助你省去配置eslint和prettier的工具，解放劳动力
 
-> 目前仅支持ts项目
+
+使用方式非常简单：
+1. 安装`npm i prettier-eslint-config --global`
+2. 进入对应项目,输入命令`prelint init`即可创建对应的lint文件
+
 
 ## 本地调试
 
-1. 安装依赖 `npm i`
+1. 安装依赖 `npm i `
 2. 打包项目`npm run start`
 3. 创建软链`npm link`
 4. 控制台输入`lint-cli xxx`，即可进行调试
